@@ -1,0 +1,20 @@
+%{
+#include<stdio.h>
+%}
+
+%% 
+if|while|else|char  {printf("%s is a keyword", yytext);}
+[0-9]+ {printf("%s is a number", yytext);}
+[a-z A-Z]+ {printf("%s is a identifier", yytext);}
+.|\n {ECHO;}
+%%
+int main()
+{
+printf("\n Enter the string:");	
+yylex();
+}
+
+int yywrap()
+{
+return 1;
+}
